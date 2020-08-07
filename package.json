@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack",
+    "watch": "webpack -w"
   },
   "author": "",
   "license": "ISC",
@@ -14,5 +15,8 @@
     "@babel/preset-react": "^7.10.4",
     "babel-loader": "^8.1.0",
     "webpack": "^4.44.1"
+  },
+  "dependencies": {
+    "webpack-cli": "^3.3.12"
   }
 }
