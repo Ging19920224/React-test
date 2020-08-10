@@ -1,24 +1,33 @@
-import Result from './Result.jsx';
-
-class Counter extends React.Component {
+class InputTextWithPreview extends React.Component {
     constructor(props) {
         super(props);
+        this.handler = this.handler.bind(this);
         this.state = {
-            count: 0
+            title:　'randy'
         }
     }
-    countPlusOneHandler() {
-        let count = this.state.count + 1;
-        this.setState({count: count});
+    handler = (e) => {
+        const {name, value} = e.target;
+        this.setState({ [name]: value}, () => {
+            console.log(this.state);
+        });
     }
     render() {
         return (
             <div>
-                <Result {...this.state} handler={this.countPlusOneHandler.bind(this)}/>
-                <button type="button" onClick={this.countPlusOneHandler.bind(this)}>Click me!!</button>
+                <h1>{this.state.title}</h1>
+                <input 
+                    type="text"
+                    name="title"
+                    value={this.state.title}
+                    onChange={this.handler}
+                />
             </div>
         )
     }
 }
 
-ReactDOM.render(<Counter />, document.getElementById('root'));
+ReactDOM.render(
+    <InputTextWithPreview />,
+    document.getElementById('root')
+)
