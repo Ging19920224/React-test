@@ -1,21 +1,24 @@
-class Test extends React.Component {
+import Result from './Result.jsx';
+
+class Counter extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: '555'
+            count: 0
         }
     }
-    inputHandler(e) {
-        this.setState({name: e.target.value});
+    countPlusOneHandler() {
+        let count = this.state.count + 1;
+        this.setState({count: count});
     }
     render() {
         return (
-            <p>
-                input test <br />
-                <input type="text" value={this.state.name} onChange={this.inputHandler.bind(this)}/>
-            </p>
+            <div>
+                <Result {...this.state} handler={this.countPlusOneHandler.bind(this)}/>
+                <button type="button" onClick={this.countPlusOneHandler.bind(this)}>Click me!!</button>
+            </div>
         )
     }
 }
 
-ReactDOM.render(<Test />, document.getElementById('root'));
+ReactDOM.render(<Counter />, document.getElementById('root'));
